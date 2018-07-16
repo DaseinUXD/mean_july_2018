@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="../public/javascripts/bootstrap.js"></script>
+
+    <!--stylesheets-->
+
+    <link rel="stylesheet" href="../stylesheets/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="../stylesheets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../stylesheets/css/style.css"/>
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1 class="text-primary"><%= title %></h1>
+                <h2 class="text-info">Welcome to <%= title %></h2>
+                <h3 class="text-warning"><%= greeting %>
+                </h3>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1>This is a dynamic greeting from port 666: <%= greeting %></h1>
+                <h1>Cars and Cats</h1>
+                <div><a href="cars">See Car Pics</a></div>
+                <div><a href="cars/new">Add New Car Information</a></div>
+                <div><a href="cats">See Cat Pics</a></div>
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+</body>
+</html>
