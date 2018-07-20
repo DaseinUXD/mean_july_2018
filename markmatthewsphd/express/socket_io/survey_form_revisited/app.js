@@ -1,7 +1,12 @@
-var express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var app = express();
+const express = require('express');
+let session = require('express-session');
+let bodyParser = require('body-parser');
+const app = express();
+let port = 666;
+const server = app.listen(port);
+console.log('Thank you for listening on port', port);
+const io = require('socket.io')(server);
+let counter = 0;
 
 // view engine setup
 app.set('views', __dirname + '/views');
@@ -23,9 +28,18 @@ app.get('/', function (request, response, next) {
     response.render('index', {title: 'Express'});
 });
 
+io.on('connection', function (socket) {
+    console.log('socket open');
+    // socket.emit('greeting', {msg: 'connected -server'});
+    socket.on('posting_form', function (data) {
+        console.log(data.msg);
+    });
+    socket.emit('random_number', {msg: 'random number goes here'});
+});
+
 /* POST to submit url */
 app.post('/submit', function (request, response) {
-    console.log('you submitted and i recieved the post request');
+    console.log('you submitted and i received the post request');
     console.log(request.body); //returns a json object of key:value pairs based on the 'name' attribute
     // of the html input tag as the key.
     console.log(request.body.name);
@@ -55,6 +69,3 @@ app.get('/result', function (request, response) {
 });
 
 
-app.listen(666, function () {
-    console.log('hello, i am the antichrist. thank you for listening on port 666 the styx, hell\'s best musak!');
-});

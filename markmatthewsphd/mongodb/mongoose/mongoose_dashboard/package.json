@@ -3,17 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js",
+    "mongod": "d:/mongodb/server/4.0/bin/mongod",
+    "mongo": "d:/mongodb/server/4.0/bin/mongo",
+    "open_terminal": "bash -e",
+    "mongodb": "npm run mongod && mongo"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
-    "http-errors": "~1.6.2",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.4",
-    "morgan": "~1.9.0",
     "shelljs": "^0.8.2"
   }
 }

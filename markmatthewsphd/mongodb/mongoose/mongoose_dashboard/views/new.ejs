@@ -23,52 +23,43 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <h1 class="text-primary"><%= title %></h1>
-                <h3 class="text-dark">Welcome to <%= title %></h3>
             </div>
             <div class="col-2"></div>
         </div>
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <form action="" method="">
+                <form action="/mongooses" method="post">
                     <fieldset>
-                        <legend><%= title %></legend>
-                        <div class="form-group">
-                            <label for="first_name" class="col-form-label">First Name:</label>
-                            <input value="" id="first_name" class="form-control" type="text" name="first_name">
+                        <legend></legend>
+                        <!--name-->
+                        <div class="form-group row h5">
+                            <label for="name" class="col-2 col-form-label tex">Name:</label>
+                            <div class="col-4">
+                                <input value="" id="name" class="form-control" type="text" name="name">
+                            </div>
+                            <div class="col-6"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="last_name" class="col-form-label">Last Name:</label>
-                            <input value="" id="last_name" class="form-control" type="text" name="last_name">
+                        <!--age-->
+                        <div class="form-group row h5">
+                            <label for="age" class="col-2 col-form-label">Age:</label>
+                            <div class="col-4">
+                                <input value="" id="age" class="form-control" type="text" name="age">
+                            </div>
+                            <div class="col-6"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="col-form-label">Email Address:</label>
-                            <input value="" id="email" class="form-control" type="email" name="email">
+                        <!--weight-->
+                        <div class="form-group row h5">
+                            <label for="weight" class="col-2 col-form-label">Weight:</label>
+                            <div class="col-4">
+                                <input value="" id="weight" class="form-control" type="text" name="weight">
+                            </div>
+                            <div class="col-6"></div>
                         </div>
+                        <!--submit button-->
                         <div class="form-group">
-                            <label for="password" class="col-form-label">Password:</label>
-                            <input value="" id="password" class="form-control" type="password" name="password">
+                            <input type="submit" value="Add Mongoose" class="btn btn-success">
                         </div>
-                        <div class="form-group">
-                            <label for="text_area" class="col-form-label">Your quote:</label>
-                            <textarea id="text_area" class="form-control" name="text_area"></textarea>
-                        </div>
-                        <!--button based on input tag-->
-                        <div class="form-group">
-                            <p>button based on input tag</p>
-                            <input type="submit" value="Input Tag" class="btn btn-primary">
-                        </div>
-                        <!--button based on button tag-->
-                        <div class="form-group">
-                            <p>button based on button tag</p>
-                            <button type="submit" value="submit" class="btn btn-success">Button Tag</button>
-                        </div>
-                        <!--button based on anchor tag-->
-                        <div class="form-group">
-                            <p>button based on anchor tag</p>
-                            <a href="#" class="btn btn-info">Anchor Tag</a>
-                        </div>
-                        <div class="form-group"></div>
                     </fieldset>
                 </form>
             </div>

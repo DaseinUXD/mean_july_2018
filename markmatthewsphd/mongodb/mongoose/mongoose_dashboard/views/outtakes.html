@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>$Title$</title>
-</head>
-<body>
-    $END$
-</body>
-</html>
+<% for (var i = 0; i < mongooses.length; i++){ %>
+
+<tr>
+    <td><%= mongooses[i].name %></td>
+    <td><%= mongooses[i].age %></td>
+    <td><%= mongooses[i].weight %></td>
+    <td>
+        <form>
+            <div class="form-check text-center">
+                <input id="<%= mongooses[i].id %>" class="form-check-input" type="radio" name="checkbox" value="<%= mongooses[i].id %>">
+            </div>
+        </form>
+    </td>
+</tr>
+<% } %>

@@ -11,9 +11,9 @@
     <script src="../javascripts/bootstrap.js"></script>
 
     <!--stylesheets-->
-    <link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
-    <link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
-    <link rel="stylesheet" href="../stylesheets/style.css"/>
+    <link rel="stylesheet" href="/stylesheets/fontawesome-all.css"/>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
     <!--title-->
     <title><%= title %></title>
 </head>
@@ -22,29 +22,21 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <h1 class="text-primary"><%= title %></h1>
+                <h1 class="text-primary"><%= intro %>: <%= mongoose.name %></h1>
             </div>
             <div class="col-2"></div>
         </div>
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <form action="/mongooses" method="post">
+                <form>
                     <fieldset>
-                        <legend></legend>
-                        <!--name-->
-                        <div class="form-group row h5">
-                            <label for="name" class="col-2 col-form-label tex">Name:</label>
-                            <div class="col-4">
-                                <input value="" id="name" class="form-control" type="text" name="name">
-                            </div>
-                            <div class="col-6"></div>
-                        </div>
+                        <legend>Vital Statistics</legend>
                         <!--age-->
                         <div class="form-group row h5">
                             <label for="age" class="col-2 col-form-label">Age:</label>
                             <div class="col-4">
-                                <input value="" id="age" class="form-control" type="text" name="age">
+                                <input value="<%= mongoose.age %>" disabled readonly id="age" class="form-control h5 " type="text" name="age">
                             </div>
                             <div class="col-6"></div>
                         </div>
@@ -52,13 +44,13 @@
                         <div class="form-group row h5">
                             <label for="weight" class="col-2 col-form-label">Weight:</label>
                             <div class="col-4">
-                                <input value="" id="weight" class="form-control" type="text" name="weight">
+                                <input value="<%= mongoose.weight %>" disabled readonly id="weight" class="form-control h5 " type="text" name="weight">
                             </div>
                             <div class="col-6"></div>
                         </div>
                         <!--submit button-->
                         <div class="form-group">
-                            <input type="submit" value="Add Mongoose" class="btn btn-success">
+                            <button type="submit" formaction="/" class="btn btn-success">Return</button>
                         </div>
                     </fieldset>
                 </form>

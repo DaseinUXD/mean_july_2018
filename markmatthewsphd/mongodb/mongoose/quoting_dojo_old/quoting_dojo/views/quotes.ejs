@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="../javascripts/bootstrap.js"></script>
+    <script src="../javascripts/moment.js"></script>
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" href="../stylesheets/style.css"/>
+    <!--title-->
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!--Title-->
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1 class="text-primary"><%= title %></h1>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <!--Quotes-->
+        <div class="row">
+            <div class="col-xl-4 col-lg-3 col-md-2 col-sm-1"></div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-lg-10">
+                <% console.log(quotes[0]) %>
+                <h3 class="text-muted">Here are some great quotes</h3>
+                <% for (var i = 0; i < quotes.length; i++) { %>
+
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="text-left text-muted d-inline">
+                            <sup><i class="fa fa-quote-left fa-xs text-muted"></i></sup>
+                                <%= quotes[i].quote %>
+
+                            <sup><i class="fa fa-quote-right fa-xs text-muted"></i></sup>
+                        </h5>
+                        <!--</div>-->
+                        <!--<div class="col-12">-->
+                        <h6 class="text-right text-primary font-weight-bold">
+                            ~<%= quotes[i].name %>
+                            at
+                            <%=moment(quotes[i].createdAt).format('LT') %>
+                            <!--<%=moment(quotes[i].createdAt).format('dddd') %>,-->
+                            <%=moment(quotes[i].createdAt).format('MMMM Do YYYY') %>
+
+
+                        </h6>
+                    </div>
+                </div>
+                <div class="row"></div>
+
+                <% } %>
+
+                <a href='/' class="btn btn-success">Add another quote</a>
+
+            </div>
+            <div class="col-xl-3 col-lg-3col-md-2 col-sm-1"></div>
+        </div>
+        <div class="row"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="../javascripts/bootstrap.js"></script>
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" href="../stylesheets/style.css"/>
+    <!--title-->
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1 class="text-primary"><%= title %></h1>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <!-- tip to easily see objects printed in full instead of [object Object] -->
+
+                <!-- based on the structure of your messages, determine how to display them -->
+                <% if(messages.adding_quote) { %>
+
+                <% for (var msg of messages.adding_quote) { %>
+                <h6 class="text-danger"><%= msg %></h6>
+                <% } %>
+                <% } %>
+                <a href='/' class="btn btn-warning">Return</a>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+        <div class="row"></div>
+    </div>
+</body>
+</html>

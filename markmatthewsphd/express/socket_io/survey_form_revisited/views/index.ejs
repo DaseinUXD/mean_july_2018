@@ -2,13 +2,47 @@
 <html>
 <head>
     <!--scripts-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
     <script src="../javascripts/bootstrap.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            // var socket = io();
+
+            // socket.on('greeting', function (data) {
+            //     console.log(data.msg);
+            //     socket.emit('thankyou', {msg: 'Thanks, -client'});
+            // });
+            $('#emit').click(function () {
+                console.log('emit button pushed')
+                var socket = io();
+
+                socket.on('form_data', function (socket) {
+                    // console.log(data.msg);
+                    socket.emit('posting_form', {msg: 'form data goes here'});
+                    socket.on('random_number', function (data) {
+                        console.log(data.msg);
+                    })
+                });
+
+
+                //
+                // socket.on('connection', function (socket) {
+                //     socket.emit('formData', {msg: 'form data goes here'});
+                //     socket.on('randomNumber', function(data){
+                //         console.log(data.msg);
+                //     });
+                // });
+
+            });
+        });
+
+
+    </script>
+
 
     <!--stylesheets-->
     <link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
@@ -36,8 +70,8 @@
                             <div class="form-group">
                                 <label for="location">Dojo Location:</label>
                                 <select id="location" class="custom-select" name="location">
-                                    <option >Choose...</option>
-                                    <option selected value="San Jose" >San Jose</option>
+                                    <option>Choose...</option>
+                                    <option selected value="San Jose">San Jose</option>
                                     <option value="Dallas">Dallas</option>
                                     <option value="Chicago">Chicago</option>
                                     <option value="Fullerton">Fullerton</option>
@@ -69,6 +103,7 @@
 
                             <input type="submit" id="submit" name="submit" value="Submit"
                                    class="btn btn-outline-primary">
+                            <div id="emit" class="btn btn-outline-info">Emit</div>
                         </fieldset>
                     </form>
                 </div>

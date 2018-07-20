@@ -1,11 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>$Title$</title>
+    <!--scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="../javascripts/bootstrap.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#emit').click(function () {
+                console.log('Emit button pushed');
+                var socket = io();
+                console.log('this is the socket', socket);
+                socket.on('connection', function(socket){
+                    console.log(socket);
+                    socket.emit('posting_form', {message: 'Sent from mouse click'});
+                    socket.on('random_number', function (data){
+                        console.log(data.random_number);
+                    });
+                });
+
+            });
+        })
+    </script>
+
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" href="../stylesheets/style.css"/>
+    <!--title-->
+    <title><%= title %></title>
 </head>
 <body>
-    $END$
+    <div class="container">
+        <div class="navbar"></div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-5">
+                <div class="form-area">
+
+
+                    <form role="form" id="form" action="/submit" method="POST">
+                        <fieldset>
+                            <legend><h3>Dojo Survey</h3></legend>
+                            <div class="form-group">
+                                <label for="name">Your Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" value="Jackass Johnson">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Dojo Location:</label>
+                                <select id="location" class="custom-select" name="location">
+                                    <option>Choose...</option>
+                                    <option selected value="San Jose">San Jose</option>
+                                    <option value="Dallas">Dallas</option>
+                                    <option value="Chicago">Chicago</option>
+                                    <option value="Fullerton">Fullerton</option>
+                                    <option value="New York City">New York City</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="language">Favorite Language:</label>
+                                <select id="language" class="custom-select" name="language">
+                                    <option>Choose...</option>
+                                    <option selected value="JavaScript">JavaScript</option>
+                                    <option value="Python">Python</option>
+                                    <option value="R">R</option>
+                                    <option value="php">php</option>
+                                    <option value="BASIC">BASIC</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="comment">Comments (optional):</label>
+                                <textarea form="form" class="form-control" id="comment" name="comment"
+                                          placeholder="Comments" maxlength="140"
+                                          rows="7">Some comment in this area</textarea>
+                            </div>
+
+                            <input type="submit" id="submit" name="submit" value="Submit"
+                                   class="btn btn-outline-primary">
+                            <div id="emit" class="btn btn-outline-secondary">Emit</div>
+                        </fieldset>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 </html>
