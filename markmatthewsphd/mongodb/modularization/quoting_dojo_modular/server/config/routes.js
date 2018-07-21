@@ -1,6 +1,7 @@
-const mongoose = require('mongoose'),
-    Quote = mongoose.model('Quote')
-const quotes = require('../controllers/quotes');
+const mongoose = require('mongoose');
+const    Quote = mongoose.model('Quote');
+const quotes = require('../controllers/quotes.js');
+
 module.exports = function (app) {
 // process get request to root
     app.get('/', function (request, response) {
@@ -8,22 +9,16 @@ module.exports = function (app) {
 
     });
 
-
+// process post request to create a new quote
     app.post('/quotes', function (request, response) {
-        quotes.create(request, response);
-
+        quotes.create(request, response );
     });
 
     app.get('/quotes', function (request, response) {
-        Quote.find({}, function (errors, quotes) {
-            // console.log('this is what i found: \n', quotes);
-            let title = 'Quotes Page';
-            response.render('quotes', {title: title, quotes: quotes});
-        });
-
-        // console.log('GET DATA', name, quote, created);
-
-
+        quotes.read(request, response);
     });
 
-}
+
+
+
+};

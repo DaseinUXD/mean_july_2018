@@ -13,7 +13,7 @@ const app = express();
 */
 
 // connects express to MongoDB
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 // flash messages for error handling
 const flash = require('express-flash');
 // handle session data
@@ -48,22 +48,12 @@ app.locals.moment = require('moment');
 
 
 // mongoose connection to MongoDB
-mongoose.connect('mongodb://localhost/basic_mongoose');
+// mongoose.connect('mongodb://localhost/basic_mongoose');
+require('./server/config/mongoose');
+// create a model/schema for Quote
+require('./server/models/quote');
 
 
-// create a new schema
-let QuoteSchema = new mongoose.Schema({
-    name: {type: String, required: [true, 'Please enter a name'], minlength: [2, 'Name must be more than two characters']},
-    quote: {type: String, required: [true, 'Please enter a quote'], maxlength: [150, 'Quote must be no more than 150 characters']}
-}, {timestamps: true});
-
-// create a model, give it a name and apply the schema to the model
-mongoose.model('Quote', QuoteSchema);
-
-// create a new instance of the model with characteristics of the schema
-let Quote = mongoose.model('Quote');
-
-// routes
 require('./server/config/routes')(app);
 
 app.listen(port, function () {
