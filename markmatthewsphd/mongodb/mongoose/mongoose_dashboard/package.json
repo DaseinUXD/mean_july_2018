@@ -6,8 +6,7 @@
     "start": "node app.js",
     "mongod": "d:/mongodb/server/4.0/bin/mongod",
     "mongo": "d:/mongodb/server/4.0/bin/mongo",
-    "open_terminal": "bash -e",
-    "mongodb": "npm run mongod && mongo"
+    "open_terminal": "bash -e"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
