@@ -1,9 +1,13 @@
+const mongoose = require('mongoose');
+const Quote = mongoose.model('Quote');
+
 module.exports = {
+    // Index
     index: function (request, response) {
         let title = "Modular Quoting Dojo";
         response.render('index', {title: title});
     },
-
+    // CREATE
     create: function (request, response) {
         console.log('POST DATA', request.body);
         var quote = new Quote(request.body);
@@ -27,8 +31,16 @@ module.exports = {
         console.log(quote.name, quote.quote)
 
 
-        // response.redirect('/');
-    }
+    },
+    // READ
+    read: function (request, response) {
+        Quote.find({}, function (errors, quotes) {
+            // console.log('this is what i found: \n', quotes);
+            let title = 'Quotes Page';
+            response.render('quotes', {title: title, quotes: quotes});
+
+        })
+    },
 
 
-};
+    };
