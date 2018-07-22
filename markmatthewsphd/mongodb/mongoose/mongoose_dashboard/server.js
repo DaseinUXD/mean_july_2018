@@ -6,19 +6,19 @@ const path = require('path');
 const app = express();
 // const shell = require('shelljs');
 const flash = require('express-flash');
-// const session = require('express-session');
+const session = require('express-session');
 
 // mongoose connection to MongoDB 'basic_mongoose'
 require('./server/config/mongoose');
 
 // Session Setup
-// app.use(session({
-//     secret: 'my secret',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {maxAge: 60000}
-//
-// }));
+app.use(session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 60000}
+
+}));
 
 // Flash Setup
 app.use(flash());
