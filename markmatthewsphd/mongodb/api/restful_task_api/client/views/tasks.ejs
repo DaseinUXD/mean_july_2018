@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<!--scripts-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../javascripts/bootstrap.js"></script>
+
+<!--stylesheets-->
+<link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
+<link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
+<link rel="stylesheet" href="../stylesheets/style.css"/>
+<!--title-->
+<title><%= title %></title>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-primary"><%= title %></h1>
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                <button id="add" type="submit" class="btn btn-outline-primary" name="add" >Add a Task</button>
+                <button id="view_all" type="submit" class="btn btn-outline-info" name="view_all" >View All Tasks</button>
+                <button id="update" type="submit" class="btn btn-outline-secondary" name="update">Update a Task</button>
+                <button id="delete" type="submit" class="btn btn-outline-danger" name="delete">Delete a Task</button>
+
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row"></div>
+    </div>
+</body>
+</html>

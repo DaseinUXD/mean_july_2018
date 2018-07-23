@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<!--scripts-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="../javascripts/bootstrap.js"></script>
+
+<!--stylesheets-->
+<link rel="stylesheet" href="../stylesheets/fontawesome-all.css"/>
+<link rel="stylesheet" href="../stylesheets/bootstrap.css"/>
+<link rel="stylesheet" href="../stylesheets/style.css"/>
+<!--title-->
+<title><%= title %></title>
+<body>
+    <div class="container">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form action="" method="">
+                    <fieldset>
+                        <legend>Restful Task API</legend>
+                        <div class="form-group form-row">
+                            <label for="title" class="col-form-label"></label>
+                            <input id="title" type="text" class="form-control" name="title">
+                        </div>
+                        <div class="form-group form-row">
+                            <label for="description" class="col-form-label"></label>
+                            <textarea id="description" class="form-control" name="description"></textarea>
+                        </div>
+                        <div class="form-group form-check form-check-inline">
+                            <input id="completed" type="checkbox" class="form-check-input" name="completed"
+                                   value="completed">
+                            <label for="completed" class="form-check-label">Completed</label>
+                        </div>
+
+                        <div class="form-group form-row">
+                            <button id="" type="submit" class="btn btn-outline-primary" name="add">Add a Task</button>
+                            <button id="" type="submit" class="btn btn-outline-info" name="view_all">View All Tasks
+                            </button>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row"></div>
+    </div>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+</body>
+</html>
