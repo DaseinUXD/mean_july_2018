@@ -1,0 +1,155 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <!--Page Title-->
+    <nav class="navbar navbar-dark rounded bg-primary">
+        <span class="navbar-brand h4 text-light">{{ page_title }}</span>
+        <div class="col-6">
+            <input class="form-control text-center text-info h5" disabled readonly type="search"
+                   value="{{newTask | json }}">
+        </div>
+    </nav>
+
+    <!--<div class="row">-->
+    <!--<div class="col-1"></div>-->
+    <!--<div class="col-10">-->
+    <!--<table class="table table-bordered table-striped">-->
+    <!--<thead class="thead-dark">-->
+    <!--<tr>-->
+    <!--<th>Title</th>-->
+    <!--<th>Description</th>-->
+    <!--<th>Completed</th>-->
+    <!--<th>Actions</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+    <!--<div class="col-1"></div>-->
+    <!--</div>-->
+    <!--GET all tasks button-->
+    <!--<div class="row mt-4">-->
+    <!--<div class="col-2"></div>-->
+    <!--<div class="col-8 text-center">-->
+    <div (load)="onPageLoad()"></div>
+    <!--</div>-->
+    <!--<div class="col-2"></div>-->
+    <!--</div>-->
+
+    <!--Add -->
+    <div class="row">
+        <div class="col-6 text-center">
+            <form (submit)="onSubmit()" class="postForm">
+                <fieldset>
+                    <legend>Add a New Task</legend>
+                    <div class="form-group row">
+                        <label for="title" class="col-4 col-form-label">Title:</label>
+                        <div class="col-8">
+                            <input id="title" type="text" class="form-control" name="newTask.title"
+                                   [(ngModel)]="newTask.title">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="description" class="col-4 col-form-label">Description:</label>
+                        <div class="col-8">
+                            <input id="description" type="text" class="form-control" name="newTask.description"
+                                   [(ngModel)]="newTask.description">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+
+                        <input id="submit" type="submit" class="btn btn-outline-primary" value="Add Task">
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-6 text-center">
+            <form (submit)="onEdit()" class="postForm">
+                <fieldset>
+                    <legend>Edit a Task</legend>
+                    <div class="form-group row">
+                        <label for="title_edit" class="col-4 col-form-label">Title:</label>
+                        <div class="col-8">
+                            <input id="title_edit" type="text" class="form-control" name="editTask.title"
+                                   [(ngModel)]="editTask.title">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="description_edit" class="col-4 col-form-label">Description:</label>
+                        <div class="col-8">
+                            <input id="description_edit" type="text" class="form-control" name="editTask.description"
+                                   [(ngModel)]="editTask.description">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+
+                        <input id="submit_edit" type="submit" class="btn btn-outline-primary" value="Edit Task">
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="row" *ngFor="let task of tasks">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            <div class="card border-info mb-3">
+                <!--<div class="card-header">Date Created</div>-->
+                <div class="card-body text-info">
+                    <h5 class="card-title">{{ task['title'] }}</h5>
+                    <p class="card-text">{{ task['description'] }}</p>
+                    <form class="form" (submit)="getEdit(task['_id'])">
+                        <div class="form-group form-check-inline">
+                            <input id="completed" class="form-check-input" type="checkbox">
+                            <label for="completed" class="form-check-label">Completed </label>
+                        </div>
+                        <div class="form-group">
+                            <button class="col-auto btn btn-outline-warning m-2" type="submit">Edit</button>
+                            <button class="col-auto btn btn-outline-danger m-2" type="submit">Delete</button>
+                        </div>
+
+                    </form>
+                </div>
+                <!--<div class="card-footer">Updated: {{task['updatedAt']}}</div>-->
+
+            </div>
+
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <!--<div class="row" *ngFor="let task of tasks">-->
+    <!--<div class="col-4"></div>-->
+    <!--<div class="col-2 text-info h6">{{ task['title'] }}</div>-->
+    <!--<div class="col-2">-->
+    <!--<button class="btn btn-info rounded-circle" (click)="onShowClick(task['_id'])">Show</button>-->
+    <!--</div>-->
+    <!--<div class="col-4"></div>-->
+    <!--</div>-->
+    <!--<div class="row"></div>-->
+    <!--<div class="row">-->
+    <!--<div class="col-2"></div>-->
+    <!--<div class="col-8">-->
+    <!--<h2 *ngIf=""></h2>-->
+    <!--</div>-->
+    <!--<div class="col-2"></div>-->
+    <!--</div>-->
+    <!--<div class="row"></div>-->
+
+    <!--<img width="300" alt="Angular Logo"-->
+    <!--src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">-->
+
+</div>
