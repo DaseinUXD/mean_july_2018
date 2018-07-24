@@ -20,6 +20,9 @@ app.use(session({
 
 }));
 
+// setting a local instance of moment to use on the views files
+app.locals.moment = require('moment');
+
 // Flash Setup
 app.use(flash());
 
