@@ -63,7 +63,7 @@ module.exports = {
         Task.findOne({_id: request.params.id}, function (error, task) {
             let title = 'Edit a Task';
             let intro = 'Edit: ';
-            response.render('edit', {title: title, intro: intro, task: task});
+            response.json({message: 'success', data: task});
         });
 
     },
@@ -74,20 +74,23 @@ module.exports = {
             task.description = request.body.description;
             task.completed = request.body.completed;
             let title = "Edit a Task";
-            task.save();
+            task.save(
+                (function (error) {
+                    if (error) {
+                        console.log('we have errors', error);
+                        for (var key in error.errors) {
+                            request.flash('editing_task', error.errors[key].message)
+                        }
+                        response.render('edit', {title: title, task: task});
+                    }
+                    else {
+                        response.json({message: 'success', data: task});
+                    }
+                })
+
+
+            );
             response.json(task);
-            // (function (error) {
-            //     if (error) {
-            //         console.log('we have errors', error);
-            //         for (var key in error.errors) {
-            //             request.flash('editing_task', error.errors[key].message)
-            //         }
-            //         response.render('edit', {title: title, task: task});
-            //     }
-            //     else {
-            //         response.json({message: 'success', data: task});
-            //     }
-            // })
         })
 
     },
